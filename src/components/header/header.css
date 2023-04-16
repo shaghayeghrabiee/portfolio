@@ -1,7 +1,7 @@
 header {
   height: 100vh;
   overflow: hidden;
-  margin-top: 7rem;
+  padding-top: 2rem;
 }
 .header-container {
   text-align: center;

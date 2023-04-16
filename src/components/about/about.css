@@ -1,0 +1,16 @@
+.myPic{
+    background: var(--color-primary);  
+    width: 22rem;
+    height: 30rem; 
+    border-radius: 10px;
+}
+.image-about{
+    width: 22rem;
+    height: 30rem;
+    border-radius: 10px;
+    background: var(--color-primary);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
