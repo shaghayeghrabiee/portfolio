@@ -80,7 +80,7 @@
 }
 .about-card small{
     font-size: 0.6rem;
-    color: var( --color-light);
+    color: var( --color-primary);
 }
 
 p{
