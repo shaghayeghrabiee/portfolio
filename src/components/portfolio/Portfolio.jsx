@@ -1,7 +1,7 @@
 import React from "react";
 import img1 from "../../asset/portfolio-1.jpg";
 import img2 from "../../asset/portfolio-2.jpg";
-import img3 from "../../asset/portfolio-3.jpg";
+import img3 from "../../asset/portfolio-4.jpg";
 import img4 from "../../asset/portfolio-3.jpg";
 import "./portfolio.css";
 const data = [
