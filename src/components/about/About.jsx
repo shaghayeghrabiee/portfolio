@@ -20,7 +20,7 @@ const About = () => {
             <article className="about-card">
               <BsAward className="about_icon" />
               <h5>Experience</h5>
-              <small>+6 years</small>
+              <small>2 years Forntend - 4.5 years backend</small>
             </article>
             <article className="about-card">
               <AiFillFolderOpen className="about_icon" />

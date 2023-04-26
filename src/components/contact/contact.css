@@ -1,0 +1,92 @@
+.contact-container{
+    width: 60%;
+    display: grid;
+    grid-template-columns: 30% 60%;
+    gap: 12%;
+}
+.contact-options{
+    display: flex;
+    flex-direction: column;
+    gap:1.2rem
+}
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+form >input {
+    height: 3rem;
+    width: 100%;
+    padding: 1.5rem;
+    border: 2px solid var(--color-primary-variant);
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+    resize: none;
+    background: transparent;
+    color: var(--color-white);
+}
+textarea{
+    width: 100%;
+    background: transparent;
+    padding: 1.5rem;
+    border: 2px solid var(--color-primary-variant);
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+    resize: none;
+    font-size: large;
+    color: var(--color-white);
+}
+.contact-option{
+    background: var(--color-bg-variant);
+    border: 1px solid transparent;
+    padding: 1.2rem;
+    text-align: center;
+    transition: var(--transition);
+    border-radius: 1.2rem;
+    -webkit-border-radius: 1.2rem;
+    -moz-border-radius: 1.2rem;
+    -ms-border-radius: 1.2rem;
+    -o-border-radius: 1.2rem;
+    -webkit-transition: var(--transition);
+    -moz-transition: var(--transition);
+    -ms-transition: var(--transition);
+    -o-transition: var(--transition);
+}
+.contact-option:hover{
+    background: transparent;
+    border-color: var(--color-primary-variant);
+}
+.option-icon{
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+.contact-option a{
+    margin-top: 0.7rem;
+    display: inline-block;
+    font-size: 0.8rem;
+}
+/* =============================MediaQuery Medium====================================*/
+@media screen and (max-width: 1024px) {
+.contact-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap:2rem;
+}
+}
+/* =============================MediaQuery Small====================================*/
+@media screen and (max-width: 600px) {
+   
+.contact-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap:2rem;
+    width: var(--container-width-sm);
+
+}
+}
