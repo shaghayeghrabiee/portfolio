@@ -7,11 +7,16 @@ import emailjs from "emailjs-com";
 
 const Contact = () => {
   const form = useRef();
+  const changeFiled= event=>{
+    setState({
+      ...state,
+      [event.target.name]: event.target.value,
+    });
+  }
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm(
+    emailjs.sendForm(
         "service_tkeqbni",
         "template_l9nwtdc",
         form.current,
@@ -20,13 +25,23 @@ const Contact = () => {
       .then(
         (result) => {
           console.log(result.text);
+          setState({
+            name: "",
+            email: "",
+            message: "",
+          });
         },
         (error) => {
           console.log(error.text);
         }
       );
   };
-  const [message,setMessage]= useState("");
+  const [state,setState]= useState({
+    name : "",
+    email : "",
+    message :""
+  });
+
 
   return (
     <section id="contact">
@@ -53,9 +68,29 @@ const Contact = () => {
           </article>
         </div>
         <form ref={form} onSubmit={sendEmail}>
-          <input type="text" name="name" placeholder="Full Name" required />
-          <input type="email" name="email" placeholder="Your Email" required />
-          <textarea rows={7} name="message" placeholder="Message"></textarea>
+          <input
+            type="text"
+            name="name"
+            value={state.name}
+            onChange={changeFiled}
+            placeholder="Full Name"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            value={state.email}
+            onChange={changeFiled}
+            placeholder="Your Email"
+            required
+          />
+          <textarea
+            rows={7}
+            name="message"
+            value={state.message}
+            onChange={changeFiled}
+            placeholder="Message"
+          ></textarea>
           <button type="submit" className="btn btn-primary">
             Sent a message
           </button>
