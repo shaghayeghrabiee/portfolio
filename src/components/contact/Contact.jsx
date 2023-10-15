@@ -1,47 +1,44 @@
-import React,{useState} from "react";
+import React from "react";
 import { MdOutlineMail } from "react-icons/md";
 import { BsWhatsapp } from "react-icons/bs";
 import "./contact.css";
-import { useRef } from "react";
+ import { useFormik } from "formik";
+ import * as Yup from "yup";
 import emailjs from "emailjs-com";
 
+
 const Contact = () => {
-  const form = useRef();
-  const changeFiled= event=>{
-    setState({
-      ...state,
-      [event.target.name]: event.target.value,
-    });
-  }
-  const sendEmail = (e) => {
-    e.preventDefault();
 
-    emailjs.sendForm(
-        "service_tkeqbni",
-        "template_l9nwtdc",
-        form.current,
-        "UaSAd3VPWFSzrz7cN"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          setState({
-            name: "",
-            email: "",
-            message: "",
-          });
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
-  };
-  const [state,setState]= useState({
-    name : "",
-    email : "",
-    message :""
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
+    onSubmit: (values) => {
+      emailjs
+        .send(
+          "service_tkeqbni",
+          "template_l9nwtdc",
+          values,
+          "UaSAd3VPWFSzrz7cN"
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+            formik.resetForm();
+          },
+          (error) => {
+            console.log(error.text);
+          }
+        );
+    },
+    validationSchema: Yup.object({
+      name: Yup.string().required(),
+      email: Yup.string().email("Invalid email address").required(),
+      message: Yup.string(),
+    }),
   });
-
 
   return (
     <section id="contact">
@@ -67,29 +64,31 @@ const Contact = () => {
             </a>
           </article>
         </div>
-        <form ref={form} onSubmit={sendEmail}>
+        <form onSubmit={formik.handleSubmit}>
           <input
             type="text"
             name="name"
-            value={state.name}
-            onChange={changeFiled}
             placeholder="Full Name"
-            required
+            {...formik.getFieldProps("name")}
           />
+          {formik.touched.name && formik.errors.name ? (
+            <i style={{ color: "red" }}>{formik.errors.name}</i>
+          ) : null}
           <input
             type="email"
             name="email"
-            value={state.email}
-            onChange={changeFiled}
             placeholder="Your Email"
-            required
+            {...formik.getFieldProps("email")}
           />
+          {formik.touched.email && formik.errors.email ? (
+            <i style={{ color: "red" }}>{formik.errors.email}</i>
+          ) : null}
+
           <textarea
             rows={7}
             name="message"
-            value={state.message}
-            onChange={changeFiled}
             placeholder="Message"
+            {...formik.getFieldProps("message")}
           ></textarea>
           <button type="submit" className="btn btn-primary">
             Sent a message
