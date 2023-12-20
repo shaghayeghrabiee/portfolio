@@ -20,8 +20,8 @@ const data = [
   {
     id: 3,
     image: img3,
-    title: "Crypto",
-    github: "https://github.com/shaghayeghrabiee/cryptoProject-React",
+    title: "single page app vanilla",
+    github: "https://github.com/shaghayeghrabiee/single-page-app-vanilla",
   },
   {
     id: 4,
